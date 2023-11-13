@@ -1,8 +1,8 @@
 // Johnathon Bulman
 
-// AbstractStack.java
-// ==================
-// AbstractStack class that holds generics.
+// Stack.java
+// ==========
+// Stack class that holds generics.
 
 package stacks;
 
