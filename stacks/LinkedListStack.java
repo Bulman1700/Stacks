@@ -8,40 +8,48 @@ package stacks;
 
 import linkedlists.*;
 
-public class LinkedListStack<SomeType> extends Stack<SomeType> implements FancilyPrintable
+public class LinkedListStack<SomeType> implements FancilyPrintable
 {
-    LinkedList<SomeType> l = new LinkedList<>();
+    // Don't jack up the list, dude!
+    private LinkedList<SomeType> list = new LinkedList<>();
     
     @Override
+    // Push to the stack.
     public void push(SomeType data)
     {
-        l.head_insert(data);
+        list.head_insert(data);
     }
 
     @Override
+    // Pop from the stack. Returns popped data.
     public SomeType pop()
     {
-        return l.delete_head();
+        return list.delete_head();
     }
 
     @Override
+    // Peeks at the top of the stack without popping.
     public SomeType peek()
     {
-        return l.data();
+        return list.head().data();
     }
 
     @Override
+    // Checks if stack is full. In this case, the stack is never full.
     public boolean isFull()
     {
         return false;
     }
 
     @Override
+    // Checks if stack is empty.
     public boolean isEmpty()
     {
-        return l.isEmpty();
+        return list.isEmpty();
     }
 
+    @Override
+    // Destroys the stack.
     public void destroyStack()
     {
         if (isEmpty())
@@ -52,26 +60,19 @@ public class LinkedListStack<SomeType> extends Stack<SomeType> implements Fancil
     }
 
     @Override
+    // Fancy prints the stack.
     public void print()
-    {
-        fancyPrint();
-    }
-
-    @Override
-    public void fancyPrint()
     {
         if (isEmpty())
             System.out.println("   (stack is empty)");
         
-        Node<SomeType> temp = l.head();
+        Node<SomeType> temp = list.head();
+
         while (temp != null)
         {
-            System.out.print(" |%-4s" + temp.data() + "|");
-            if (temp == l.head())
-                System.out.print(" <--top\n");
-            else
-                System.out.print("\n");
-
+            System.out.printf((temp == list.head()) ? " +------+\n" : "");
+            System.out.printf(" | %-4s |%s\n", temp.toString(),
+                                (temp == list.head()) ? "<-- top" : "");
             System.out.printf(" +------+\n");
             temp = temp.next();
         }

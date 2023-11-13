@@ -1,12 +1,12 @@
 // Johnathon Bulman
 
-// FancyPrint.java
-// ===============
-// Fancy Print Interface for stacks
+// FancilyPrintable.java
+// =====================
+// Interface for printing fancy stacks.
 
 package stacks;
 
 public interface FancilyPrintable
 {
-    void fancyPrint();
+    public void print();    
 }
