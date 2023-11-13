@@ -16,11 +16,13 @@ public class Node<T>
         this.data = data;
     }
 
+    // Returns raw data.
     public T data()
     {
         return this.data;
     }
 
+    // Returns the 'next' reference.
     public Node<T> next()
     {
         return this.next;

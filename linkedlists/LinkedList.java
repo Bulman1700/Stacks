@@ -6,8 +6,6 @@
 
 package linkedlists;
 
-import java.io.*;
-
 public class LinkedList<AnyType>
 {
     // Don't jack up my node!
@@ -18,9 +16,9 @@ public class LinkedList<AnyType>
         return this.head;
     }
 
-    public AnyType data()
+    public Node<AnyType> tail()
     {
-        return head.data();
+        return this.tail;
     }
 
     // Insert at the tail of the linked list.
@@ -40,44 +38,45 @@ public class LinkedList<AnyType>
     // Insert at the head of the linked list.
     public void head_insert(AnyType data)
     {
-        // First create the new node.
+        // Create the node.
         Node<AnyType> newNode = new Node<>(data);
 
-        // Insert it at the beginning of the list.
+        // Insert at the beginning of the list.
         newNode.next = head;
         head = newNode;
 
-        // If the list was empty before adding this node, 'head' and 'tail'
-        // need to reference this new node.
+        // If the list was empty beforehand, update the tail reference.
         if (tail == null)
             tail = newNode;
-
     }
 
-    // Deletes at the front of the linked list.
+    // Deletes at the head of the linked list.
     public AnyType delete_head()
     {
         // Check if list is empty.
         if (head == null)
             return null;
         
-        // Store data and set head to head.next;
-        AnyType temp = head.data();
+        // Store data about to be deleted.
+        AnyType retval = head.data();
+        // Update the head reference.
         head = head.next;
 
-        // If the new head is null, update the tail pointer.
+        // If the new head is null, update the tail reference.
         if (head == null)   
             tail = null;
         
-        return temp;
+        return retval;
     }
 
+    // Print the linked list.
     public void print()
     {
         for (Node<AnyType> temp = head; temp != null; temp = temp.next)
-            System.out.print(temp.data() + ((temp.next == null) ? "\n" : " "));
+            System.out.print(temp.toString() + ((temp.next == null) ? "\n" : " "));
     }
 
+    // Checks if the list is empty.
     public boolean isEmpty()
     {
         return (head == null);
