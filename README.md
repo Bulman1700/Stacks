@@ -14,4 +14,4 @@ Stacks perform the following operations:
     destroyStack();
     print();
 
-The 'TestStack,java' file is a simple program that prints a main menu to the screen and allows the user to push and pop to and from the stack to their heart's content.
+The 'TestStack.java' file is a simple program that prints a main menu to the screen and allows the user to push and pop to and from the stack to their heart's content.
